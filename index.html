@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!--meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">-->
+  <title>wangyi</title>
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_1281703_8fwtmrpibv.css">
+  <link rel="stylesheet" href="/static/css/reset.css">
+
+  <style>
+    * {
+      -ms-touch-action: pan-y;
+      touch-action: pan-y;
+    }
+  </style>
+
+  <!--解决移动端点击事件0.3延迟问题: 使用fastclick库-->
+  <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+  <script>
+    if ('addEventListener' in document) {
+      document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body);
+      }, false);
+    }
+
+     // rem适配
+  !(function () {
+    let width = document.documentElement.clientWidth;
+    const styleNode = document.createElement('style');
+    styleNode.innerHTML = 'html{font-size: ' + width / 10 + 'px  !important;}';
+    document.head.appendChild(styleNode);
+  })();
+  </script>
+</head>
+<body>
+<div id="app"></div>
+<!-- built files will be auto injected -->
+</body>
+</html>
