@@ -12,6 +12,7 @@ Vue.use(VueRouter)
 
 export default new VueRouter({
   // 配置所有的路由
+  mode:'history',
   routes
 
 })

@@ -14,14 +14,12 @@
     <div>
       <section class="homeNav"  ref="homelist" >
           <ul class="homeItem" ref='ulcon'>
-            <li class="homeUi" v-for="(item,index) in homelistData" >{{item}}</li>
+            <li class="homeUi" v-for="(item,index) in homelistData" :key="index">{{item}}</li>
           </ul>
-      </section>
-
-      <!-- 遮罩层 -->
-      <section class="all">
-        <div class="allTitle">全部频道</div>
-        <ul></ul>
+          <div class="opcity"></div>
+          <div class="arrow">
+            <img src="http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/arrow-down-3-799ded53ea.png" alt="">
+          </div>
       </section>
     </div>
       <!-- 轮播部分 -->
@@ -387,7 +385,6 @@ import Swiper from 'swiper';
         font-size 28px
         display flex
         justify-content space-around
-        padding 10px
         li
           width 112px
           height 50px

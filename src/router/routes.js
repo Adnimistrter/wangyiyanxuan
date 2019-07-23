@@ -25,7 +25,7 @@ export default[
   },
   {
     path:'/things',
-    component:Things
+    component:Things,
   },
   // 路由根路径
   {
