@@ -7,15 +7,15 @@
         </div>
         <!-- 登录 -->
         <div class="btnwrap">
-          <div class="phone-login active" @click="loginsj()">
+          <div class="phone-login active" @click="loginsj">
             <i class="iconfont iconshouji"></i>
             <span>手机登录</span>
           </div>
-          <div class="email-login" @click="loginyx()">
+          <div class="email-login" @click="loginyx">
             <i class="iconfont iconyoujian"></i>
             <span>邮箱账号登录</span>
           </div>
-          <div class="quck-login" @click="rotoRegister('/profile/register')">
+          <div class="quck-login">
             <span>手机号快捷注册</span>
             <i class="iconfont iconicon-52" ></i>
           </div>

@@ -17,7 +17,11 @@ import FooterGuide from './components/FooterGuide/FooterGuide.vue'
 // 注册组件
   components:{
     FooterGuide
-  }
+  },
+// 在App中发送请求的代码
+mounted(){
+  
+}
 
   }
 </script>

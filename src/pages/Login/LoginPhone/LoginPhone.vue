@@ -7,17 +7,18 @@
       </div>
       <label class="input_phone">
         <!-- 下边部分 输入手机号-->
-        <input type="text" placeholder="请输入手机号" >
-        <div class="clear">X</div>
+        <input type="text" placeholder="请输入手机号" v-model="phone" @click="phoneTest">
+        <div class="clear" @click="handleClear" v-if="phone">X</div>
       </label>
       <!-- 手机验证码 -->
       <label class="input-code">
-         <input type="text" placeholder="请输入手机验证码">
-         <div class="get_phoneCode">获取验证码</div>
+         <input type="text" placeholder="请输入手机验证码" v-model="code" @click="phoneTest">
+         <div class="get_phoneCode" @click="getCode">获取验证码</div>
       </label>
       <!-- 遇到的问题？？ -->
       <div class="login_help">
-        <div class="err"></div>
+        <!-- 显示错误的信息 -->
+        <div class="err" v-show="errPhone || errCode">{{errPhone+'&nbsp;&nbsp;' +errCode}}</div>
         <span class="left">遇到问题？</span>
         <span class="right">使用密码验证登录</span>
       </div>
@@ -25,7 +26,7 @@
       <div class="phone_login active">
         <span>登录</span>
       </div>
-      <div class="other_login">
+      <div class="other_login" @click="loginsj">
         <span>其他登录方式</span>
       </div>
       <div class="other_register">快速注册&nbsp;&gt;</div>
@@ -35,7 +36,44 @@
 
 <script type="text/ecmascript-6">
   export default {
+      props:{
+          loginsj:Function
+      },
+      data(){
+        return{
+          phone:'',//初始手机号为空
+          errPhone:'',//错误手机号初始为空
+          errCode:'',
+          code:''//用户输入验证码
+        }
+      },
+      methods:{
 
+        /* 前台验证手机号 */
+        phoneTest(){
+          // .test(this.phone.trim())this---当前的phone来测试
+            if(!/^1[34578]\d{9}$/.test(this.phone.trim()) && this.phone){
+                this.errPhone='手机号格式错误'
+            }else{
+              this.errCode =''
+            }
+            /* 手机验证码 !--日过输入的手机号不是后面的手机号就提示错误的信息*/
+            if (!/^\d{6}$/.test(this.code.trim()) && this.code) {
+                this.errCode ="验证码格式错误"
+            }else{
+              this.errCode =''
+            }
+        },
+        /* 点击获取验证码--发送请求 */
+         getCode(){
+
+         },
+        //点击 X 清空号码
+         handleClear(){
+           this.phone =''
+          //  this.phoneTest()//调用了测试手机号的方法
+         }
+      }
   }
 </script>
 

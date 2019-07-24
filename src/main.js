@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import 'lib-flexible'
+import './mock/mock-server.js'
 
 new Vue({
   el: '#app',  // el元素会被<App/>

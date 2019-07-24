@@ -5,15 +5,16 @@
         <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="">
       </div>
       <label class="input_phone">
-        <input type="text" placeholder="邮箱账号">
+        <input type="text" placeholder="邮箱账号" v-model="mail" @click="testMail">
       </label>
       <label class="input_code">
-        <input type="text" placeholder="密码">
+        <input type="text" placeholder="密码" v-model="pwd">
       </label>
       <div class="login_help">
         <!-- 错误的信息 -->
       <div class="login_help">
-        <div class="err"></div>
+        <!-- 显示错误的信息 -->
+        <div class="err" v-show="err">{{err}}</div>
         <span class="left">注册账号</span>
         <span class="right">忘记账号</span>
       </div>
@@ -21,7 +22,7 @@
       <div class="phone_login active">
           <span>登录</span>
       </div>
-      <div class="other_login">
+      <div class="other_login" @click="loginyx">
         <span>其他账号登录方式</span>
       </div>
     </div>
@@ -30,6 +31,30 @@
 
 <script type="text/ecmascript-6">
   export default {
+// 从父组件Login传过来的参数，并且在子组件接收，判断接收参数的类型，一般看是什么类型的话，看子付租金中是什么类型，子组件中
+// 接收的参数类型就是什么类型（父组件与子组件点击跳转的传参的方式）
+    props:{
+      loginyx:Function
+    },
+    /* 将双向绑定的数据先定义 */
+    data(){
+      return{
+        mail:'',//用户输入的邮箱名
+        pwd:'',//用户输入的密码
+        err:''
+      }
+    },
+     methods:{
+
+      //  前台进行验证
+       testMail(){
+         if (!/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/.test(this.mail) &&this.mail) {
+           this.err ='邮箱格式不正确'
+         }else{
+           this.err =''
+         }
+       }
+     }
   }
 </script>
 
