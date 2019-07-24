@@ -21,7 +21,7 @@
       <img src="http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/noCart-d6193bd6e4.png" alt="">
       <span>去添点什么吧~~~</span>
       <!-- 点击跳转的路径 -->
-      <button @click="$router.push('/profile')">去登录</button>
+      <button @click="$router.push('/login')">登录</button>
     </div>
   </div>
 </template>

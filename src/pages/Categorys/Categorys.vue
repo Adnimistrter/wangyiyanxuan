@@ -5,7 +5,7 @@
       <span class="iconfont iconsousuo"></span>
       <span class="input">搜索商品，共xxxx款好物</span>
     </section>
-    <!-- 左侧导航 -->
+    <!-- 左侧导航 categoryList-->
     <div class="Navleft-container">
       <div class="line"></div>
       <section class="nav-left">
@@ -53,7 +53,7 @@
               <a href="javascript:;">特色区</a>
             </li>
           </ul>
-          <!-- 右侧导航 -->
+          <!-- 右侧导航 category-->
           <section class="container-right">
             <div class="category-main">
               <img src="http://yanxuan.nosdn.127.net/cb225335d4a438564040f00b448e8db8.png" alt="">

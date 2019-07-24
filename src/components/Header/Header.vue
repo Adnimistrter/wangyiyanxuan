@@ -1,6 +1,6 @@
 <template>
 <!-- profile头部 -->
-  <header>
+  <header class="header-slot">
     <i class="iconfont iconshouye" @click="goto('/home')"></i>
     <!-- 使用具名插槽 -->
     <slot name="title"></slot>
@@ -26,9 +26,9 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
-  header
+  .header-slot
    display flex
-   background #fafafa
+   background #eee
    height 88px
    width 100%
    line-height 88px
@@ -37,6 +37,7 @@
    left 0
    padding 0 24px
    z-index 10
+   margin-bottom 1px solid #999
    div
     flex 1
     .iconsousuo
