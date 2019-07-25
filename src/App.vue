@@ -20,7 +20,8 @@ import FooterGuide from './components/FooterGuide/FooterGuide.vue'
   },
 // 在App中发送请求的代码
 mounted(){
-  
+  // this.$store.dispatch('')
+
 }
 
   }

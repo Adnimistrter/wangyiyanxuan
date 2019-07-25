@@ -10,89 +10,19 @@
       <div class="line"></div>
       <section class="nav-left">
           <ul>
-            <li  class="active">
-              <a href="javascript:;">推荐专区</a>
-            </li>
-            <li>
-              <a href="javascript:;">冬季专区</a>
-            </li>
-            <li>
-              <a href="javascript:;">爆品专区</a>
-            </li>
-            <li>
-              <a href="javascript:;">新品专区</a>
-            </li>
-            <li>
-              <a href="javascript:;">居家</a>
-            </li>
-            <li>
-              <a href="javascript:;">鞋包配饰</a>
-            </li>
-            <li>
-              <a href="javascript:;">服装</a>
-            </li>
-            <li>
-              <a href="javascript:;">电器</a></a>
-            </li>
-            <li>
-              <a href="javascript:;">洗护</a>
-            </li>
-            <li>
-              <a href="javascript:;">饮食</a>
-            </li>
-            <li>
-              <a href="javascript:;">餐厨</a>
-            </li>
-            <li>
-              <a href="javascript:;">婴童</a>
-            </li>
-            <li>
-              <a href="javascript:;">文体</a>
-            </li>
-            <li>
-              <a href="javascript:;">特色区</a>
+            <li  v-for="(category,index) in categoryData.categoryL1List" :key="index">
+              <a href="javascript:;">{{category.name}}</a>
             </li>
           </ul>
           <!-- 右侧导航 category-->
-          <section class="container-right">
-            <div class="category-main">
-              <img src="http://yanxuan.nosdn.127.net/cb225335d4a438564040f00b448e8db8.png" alt="">
+          <section class="container-right" >
+            <!-- v-if判断这个dom元素有还是没有，有的话就会显示图片 -->
+            <div class="category-main" v-if="categoryData.categoryL1List">
+              <img :src="categoryData.categoryL1List[0].wapBannerUrl" alt="">
               <ul>
-                <li>
-                  <img src="http://yanxuan.nosdn.127.net/14bbdfb252b4ce346b8e9d019bb5b677.png" alt="">
-                  <span>丁磊的好货推荐</span>
-                </li>
-                <li>
-                  <img src="http://yanxuan.nosdn.127.net/14bbdfb252b4ce346b8e9d019bb5b677.png" alt="">
-                  <span>丁磊的好货推荐</span>
-                </li>
-                <li>
-                  <img src="http://yanxuan.nosdn.127.net/14bbdfb252b4ce346b8e9d019bb5b677.png" alt="">
-                  <span>丁磊的好货推荐</span>
-                </li>
-                <li>
-                  <img src="http://yanxuan.nosdn.127.net/14bbdfb252b4ce346b8e9d019bb5b677.png" alt="">
-                  <span>丁磊的好货推荐</span>
-                </li>
-                <li>
-                  <img src="http://yanxuan.nosdn.127.net/14bbdfb252b4ce346b8e9d019bb5b677.png" alt="">
-                  <span>丁磊的好货推荐</span>
-                </li>
-                <li>
-                  <img src="http://yanxuan.nosdn.127.net/14bbdfb252b4ce346b8e9d019bb5b677.png" alt="">
-                  <span>丁磊的好货推荐</span>
-                </li>
-                <li>
-                  <img src="http://yanxuan.nosdn.127.net/14bbdfb252b4ce346b8e9d019bb5b677.png" alt="">
-                  <span>丁磊的好货推荐</span>
-                </li>
-                <li>
-                  <img src="http://yanxuan.nosdn.127.net/14bbdfb252b4ce346b8e9d019bb5b677.png" alt="">
-                  <span>丁磊的好货推荐</span>
-                </li>
-                <li>
-                  <img src="http://yanxuan.nosdn.127.net/14bbdfb252b4ce346b8e9d019bb5b677.png" alt="">
-                  <span>丁磊的好货推荐</span>
+                <li v-for="(category,index) in categoryData.categoryL2List[1].wapBannerUrl" :key="index">
+                  <img :src="categoryData.wapBannerUrl" alt="">
+                  <span>{{categoryData.name}}</span>
                 </li>
               </ul>
             </div>
@@ -103,7 +33,29 @@
 </template>
 
 <script type="text/ecmascript-6">
+// 读取状态的数据，引一个映射函数--在computed中写
+import {mapState} from 'vuex'
+import BScroll from 'better-scroll'
   export default {
+
+    computed:{
+      ...mapState({
+        categoryData:state =>state.category.categoryData
+      })
+    },
+
+    mounted(){
+      // 提交getCategory
+      this.$store.dispatch('getCategory',() =>{
+        this.$nextTick(() =>{
+          new BScroll('.nav-left',{
+            click:true
+          })
+          // 右侧
+          new BScroll('.container-right')
+        })
+      })
+    }
   }
 </script>
 
@@ -157,6 +109,7 @@
         ul
          width 162px
          float left
+         height 1220px
          li
           height 50px
           text-align center
